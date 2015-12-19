@@ -5,14 +5,49 @@ var MAX_ROW=15;
 var MAX_COL=10;
 var CELL_SIZE=16;
 var PUYOS_IMG="puyos.png"
-
+var score=0;
 window.onload=function(){
 	var game=new Game(160,240);
 	game.fps=FPS;
+	game.preload('startgame.png');
 	game.preload(PUYOS_IMG);
+	game.preload('gameover.png');
 	game.keybind(32,'a');
+	game.score=score;
+	var scoreLabel = new Label("SCORE:0");
+	scoreLabel.font="16px Tahoma";
+	scoreLabel.color="black";
+	scoreLabel.x=50;
+	scoreLabel.y=50;
+	game.rootScene.addChild(scoreLabel);
 	game.onload=function(){
+		var titleScene = new Scene();
+		//タイトル画面
+		var titleAnim=new Sprite(160,240);
+		titleAnim.image = game.assets['startgame.png'];
+		titleAnim.addEventListener('touchstart',function(){
+			game.popScene();
+		});
+		titleScene.addChild(titleAnim);
+
+		function insertRow(){
+			//テーブル取得
+			var table=document.getElementById("ranking");
+			//行を行末に追加
+			var row = table.insertRow(-1);
+			user=document.username.name.value;
+			//セルの挿入
+			var cell1=row.insertCell(-1);
+			var cell2=row.insertCell(-1);
+			var cell3=row.insertCell(-1);
+			//行数取得
+			var row_len = table.rows.length;
+			cell1.innerHTML=(row_len-1);
+			cell2.innerHTML=user;
+			cell3.innerHTML=game.score;
+		}	
 		var scene=game.rootScene;
+		//game.scene.addChild(scoreLabel);
 		var map=new Map(16,16);
 		var field = new Array(MAX_ROW);
 		for (var i=0;i<field.length;i++){
@@ -32,20 +67,44 @@ window.onload=function(){
 			if(!pair.isFall){
 				scene.removeChild(pair);
 				freeFall(field);
-				chain(field);
+				game.score=chain(field);
+				scoreLabel.text="SCORE:"+game.score;
 				map.loadData(field);
 				if(field[2][3] != -1){
 					game.stop();
-					console.log("Game Over");
+					insertRow()
+					var gameov=new Sprite(160,100);
+					gameov.image=game.assets['gameover.png'];
+					gameov.addEventListener('touchstart',function(){
+						game.pushScene(titleScene);
+					});
+					scene.addChild(gameov);
 				}else{
 					pair=createPair(game,map,field);
 					scene.addChild(pair);
 				}
 			}
 		});
-
+		game.pushScene(titleScene);
 	};
 	game.start();
+	
+	function insertRow(){
+		//テーブル取得
+		var table=document.getElementById("ranking");
+		//行を行末に追加
+		var row = table.insertRow(-1);
+		user=document.username.name.value;
+		//セルの挿入
+		var cell1=row.insertCell(-1);
+		var cell2=row.insertCell(-1);
+		var cell3=row.insertCell(-1);
+		//行数取得
+		var row_len = table.rows.length;
+		cell1.innerHTML=(row_len-1);
+		cell2.innerHTML=user;
+		cell3.innerHTML=game.score;
+	}
 }
 
 
@@ -158,11 +217,15 @@ function chain(field){
 		for(var j=0;j<MAX_COL; j++){
 			var n=0;
 			if(field[i][j]>=1 && countPuyos(i,j,field)>=4){
+				score=score+countPuyos(i,j,field);
 				deletePuyos(i,j,field);
 			};
 		}
 	}
-	if(freeFall(field)>=1) chain(field);
+	if(freeFall(field)>=1){
+		chain(field);
+	}
+	return score;
 }
 
 
