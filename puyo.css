@@ -1,0 +1,160 @@
+@font-face { 
+	font-family: 'MyFont';
+	src: url(./PixelMplus12-Regular.ttf);
+}
+
+body{
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	color: black;
+	background: white;
+	font-family: MyFont,sans-serif;
+	line-height: 1.5em;
+	font-size: 0.95em;
+
+}
+
+div{
+	display: inline-block;
+}
+/*********************************************/
+#content{
+	/*background: red;*/
+	width: 680px;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
+	padding: 15px;
+}
+
+#timely{
+	width: 100%;
+	/*background: blue;*/
+	margin: 0 0 15px 0;
+	padding: 0;
+	top: 0;
+}
+#timely ul{
+	list-style-type: none;
+	margin: 5px 0 0 0;
+	padding: 0;
+	display: inline-block;
+	/*background: blue;*/
+	position: absolute;
+}
+#timely img{
+	margin: 0;
+	padding: 0;
+	width: 64px;
+	height: 64px;
+	align: left;
+	display: inline-block;
+}
+#puyo{
+	background: pink;
+	width: 300px;
+	height: 500px;
+}
+#preference_rank{
+	/*background: yellow;*/
+	position: absolute;
+	margin-left: 20px;
+}
+
+#imagepack{
+
+}
+
+#imagepack .bef{
+	display:block;
+	cursor:pointer;
+	border: 1.5px solid #000;
+	border-radius: 10px;
+	padding: 2px 8px;
+	margin-bottom: 10px;
+	width: 79px;
+	text-align: center;
+}
+
+#imagepack .bef:hover{
+	background: #eee;
+}
+
+#imagepack .aft{
+	width: 310px;
+	height: 225px;
+	background:#f2f2f2;
+	border:#666 1px solid;
+	display:none;
+	/*display: block;*/
+	margin: 0;
+	padding: 5px;
+}
+
+/*hover時、他要素にアクセスする*/
+/*(>: 兄弟要素, +: 隣接要素)*/
+#imagepack .aft:hover > #imright, 
+#imagepack .aft:hover > #imleft{ 
+	opacity: .8;
+	-webkit-transition: 1s;
+	transition: 1s;
+
+}
+
+#imright, #imleft{
+	width: 35px;
+	height: 35px;
+	opacity: 0;
+	position: absolute;
+}
+
+#imright{
+	top: 210px;
+	left: 280px;
+}
+#imleft{
+	top: 210px;
+}
+#imagepack .aft ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#imagepack .aft li{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+#imagepack .aft .imbef{
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	/*padding: 5px;*/
+	margin: 0;
+}
+
+#rank{
+	position: absolute;
+	top: 370px;
+}
+
+#rank table{
+	border: 2px solid #000;
+}
+#rank th{
+	border: 1.5px solid #000;
+	margin: 0;
+	padding: 3px 12px;
+}
+
+#rank td{
+	text-align: center;
+	border: 1.5px solid #000;
+}
+
+/*********************************************/
