@@ -33,9 +33,9 @@
 		var cell3=row.insertCell(-1);
 		//行数取得
 		var row_len = table.rows.length;
-		cell1.innerHTML= (row_len-1);
-		cell2.innerHTML= user;
-		//cell3.innerHTML=100;
+		cell1.innerHTML=(row_len-1);
+		cell2.innerHTML=user;
+		cell3.innerHTML=FPS;
 	}
 </script>
 <!--<style>body{margin:100;padding:100;}</style>-->
@@ -58,7 +58,7 @@
 				<table>
 					<tr>
 						<td>プレイヤー名</td>
-						<td><input type="text" name="name" size="30" maxlength="20"><input type="button" value="確定" onClick="insertRow('ranking')"/></td>
+						<td><input type="text" name="name" size="30" maxlength="20"><input type="button" value="確定" onClick="location.reload();"/></td>
 					</tr>
 				</table>
 			</form>
@@ -115,19 +115,6 @@
 						<th>プヨ削除数</th>
 					</tr>
 					<tr>
-						<td>1</td>
-						<td>maya</td>
-						<td>100</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>ken</td>
-						<td>80</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>yuu</td>
-						<td>75</td>
 					</tr>
 				</table>
 			</div>
