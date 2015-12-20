@@ -1,13 +1,13 @@
 enchant();
-
+var LIMIT_TIME=120;
 var FPS = 30;
 var MAX_ROW=15;
 var MAX_COL=10;
-var CELL_SIZE=16;
-var PUYOS_IMG="puyos.png"
+var CELL_SIZE=30;
+var PUYOS_IMG="puyos4.png"
 var score=0;
 window.onload=function(){
-	var game=new Game(160,240);
+	var game=new Game(300,450);
 	game.fps=FPS;
 	game.preload('startgame.png');
 	game.preload(PUYOS_IMG);
@@ -15,15 +15,29 @@ window.onload=function(){
 	game.keybind(32,'a');
 	game.score=score;
 	var scoreLabel = new Label("SCORE:0");
-	scoreLabel.font="16px Tahoma";
+	scoreLabel.font="32px Tahoma";
 	scoreLabel.color="black";
-	scoreLabel.x=50;
-	scoreLabel.y=50;
+	scoreLabel.x=80;
+	scoreLabel.y=0;
 	game.rootScene.addChild(scoreLabel);
+	var time_label=new Label();
+	time_label.x=80
+	time_label.y=40;
+	time_label.font="32px Tahoma";
+	time_label.color="black";
+	time_label.addEventListener(enchant.Event.ENTER_FRAME, function(){
+		var progress = parseInt(game.frame/game.fps);
+		time=LIMIT_TIME-parseInt(game.frame/game.fps)+"";
+		this.text="リミット:"+time;
+		if(time<0){
+			changeToGameOverScene();
+		}
+	});
+	game.rootScene.addChild(time_label);
 	game.onload=function(){
 		var titleScene = new Scene();
 		//タイトル画面
-		var titleAnim=new Sprite(160,240);
+		var titleAnim=new Sprite(300,450);
 		titleAnim.image = game.assets['startgame.png'];
 		titleAnim.addEventListener('touchstart',function(){
 			game.popScene();
@@ -48,7 +62,7 @@ window.onload=function(){
 		}	
 		var scene=game.rootScene;
 		//game.scene.addChild(scoreLabel);
-		var map=new Map(16,16);
+		var map=new Map(30,30);
 		var field = new Array(MAX_ROW);
 		for (var i=0;i<field.length;i++){
 			var temp_array=[];
@@ -71,14 +85,7 @@ window.onload=function(){
 				scoreLabel.text="SCORE:"+game.score;
 				map.loadData(field);
 				if(field[2][3] != -1){
-					game.stop();
-					insertRow()
-					var gameov=new Sprite(160,100);
-					gameov.image=game.assets['gameover.png'];
-					gameov.addEventListener('touchstart',function(){
-						game.pushScene(titleScene);
-					});
-					scene.addChild(gameov);
+					changeToGameOverScene();
 				}else{
 					pair=createPair(game,map,field);
 					scene.addChild(pair);
@@ -86,6 +93,8 @@ window.onload=function(){
 			}
 		});
 		game.pushScene(titleScene);
+		LIMIT_TIME=120;
+
 	};
 	game.start();
 	
@@ -105,6 +114,18 @@ window.onload=function(){
 		cell2.innerHTML=user;
 		cell3.innerHTML=game.score;
 	}
+
+	function changeToGameOverScene(){
+		game.stop();
+		insertRow()
+		var gameov=new Sprite(300,450);
+		gameov.image=game.assets['gameover.png'];
+		gameov.addEventListener('touchstart',function(){
+		game.pushScene(titleScene);
+		});
+		game.rootScene.addChild(gameov);
+	}
+
 }
 
 
