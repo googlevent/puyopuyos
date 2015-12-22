@@ -9,25 +9,52 @@ body{
 	top: 0;
 	left: 0;
 	width: 100%;
+	height: 100%;
 	color: black;
 	background: white;
 	font-family: MyFont,sans-serif;
 	line-height: 1.5em;
 	font-size: 0.95em;
-
+	overflow: hidden;
 }
 
 div{
 	display: inline-block;
 }
 /*********************************************/
+/*position: absoluteを指定して画像を中央に配置*/
+#background{
+	display: block;
+	position: absolute;
+	transform: rotateZ(-45deg);	
+	top: 200px;
+/*	bottom: 100px;
+*/	right: 0;
+z-index: -100000;
+/*margin: auto 0px auto auto;*/
+opacity: .75;
+}
+
+#background2{
+	display: block;
+	position: absolute;
+	transform: rotateZ(90deg);	
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -100000;
+	margin: auto auto auto -150px;
+	opacity: .75;
+}
+
 #content{
-	/*background: red;*/
 	width: 680px;
 	height: 100%;
 	display: block;
+	float: top;
 	margin: 0 auto;
-	padding: 15px;
+	padding: 30px 15px 15px 15px;
+
 }
 
 #timely{
@@ -92,32 +119,30 @@ div{
 	/*display: block;*/
 	margin: 0;
 	padding: 5px;
+	overflow-y: scroll;
 }
 
 /*hover時、他要素にアクセスする*/
 /*(>: 兄弟要素, +: 隣接要素)*/
-#imagepack .aft:hover > #imright, 
-#imagepack .aft:hover > #imleft{ 
-	opacity: .8;
+#imagepack .aft:hover > #imdown{ 
+	opacity: .85;
 	-webkit-transition: 1s;
 	transition: 1s;
-
 }
 
-#imright, #imleft{
+#imdown{
 	width: 35px;
 	height: 35px;
 	opacity: 0;
 	position: absolute;
+	left: 140px;
+	bottom: 10px;
 }
 
-#imright{
-	top: 210px;
-	left: 280px;
+#yokoscroll{
+
 }
-#imleft{
-	top: 210px;
-}
+
 #imagepack .aft ul{
 	list-style-type: none;
 	margin: 0;
@@ -131,10 +156,10 @@ div{
 }
 
 #imagepack .aft .imbef{
-	width: 32px;
-	height: 32px;
+	width: 35px;
+	height: 35px;
 	display: inline-block;
-	/*padding: 5px;*/
+	padding: 5px;
 	margin: 0;
 }
 
@@ -157,4 +182,136 @@ div{
 	border: 1.5px solid #000;
 }
 
-/*********************************************/
+/*******************************************/
+/*top page*/
+#backgroundimg{
+	display: block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#backgroundimg img{
+	width: 100%;
+}
+#imcontents{
+	display: block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 900px;
+	height: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+#imcontents #title{
+	font-size: 120px;
+}
+
+#imcontents img{
+	display: block;
+	position: absolute;
+	bottom: 54px;
+	width: 100%;
+}
+
+#imcontents #kanransya{
+	width: 100px;
+	height: 111px;
+	left: 235px;
+}
+
+#imcontents #kanransya:hover{
+	width: 120px;
+	height: 133px;
+	left: 225;
+	-webkit-transition: .3s;
+	transition: .3s;
+
+}
+@keyframes size_animation2{
+	0{
+		width: 82px;
+		height: 184px;
+		left: 345px;
+	}
+	50% {
+		width: 182px;
+		height: 184px;
+		left: 295px;
+	}
+	75%{
+		height: 420px;
+	}
+	100%{
+		width: 82px;
+		height: 184px;
+		left: 345px;
+	}
+}
+
+#imcontents #sbill{
+	width: 82px;
+	left: 345px;
+}
+
+#imcontents #sbill:hover{
+	animation-name: size_animation2;
+	animation-duration: .45s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1; 
+}
+
+#imcontents #bill{
+	width: 73px;
+	height: 332px;
+	left: 485px;
+}
+
+#imcontents #bill:hover{
+	width: 93px;
+	height: 422px;
+	left: 475px;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+#imcontents #tower{
+	width: 105px;
+	height: 282px;
+	left: 684px;
+}
+
+#imcontents #tower:hover{
+	width: 125px;
+	height: 335px;
+	left: 674px;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+@keyframes droid_walk{
+	0{
+		transform:rotateZ(-15deg);
+	}
+	50%{
+		transform:rotateZ(15deg);	
+	}
+	100%{
+		transform:rotateZ(-15deg);	
+	}
+}
+#imcontents #droid{
+	width: 100px;
+	animation-name: droid_walk;
+	animation-duration: .75s;
+	animation-timing-function: liner;
+	animation-iteration-count: infinite; 	
+}
+
+
