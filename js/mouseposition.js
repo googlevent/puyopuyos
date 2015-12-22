@@ -5,7 +5,7 @@ function MouseMove00Func(e){
 	// console.log(mouseX);
 	mouseY = e.screenY;
 	var m = mouseX-100;
-	 // src: "/images/hat.gif"
+	 console.log(mouseX);
 	 $('#droid').attr({style: 'left:'+m});
 	}
 
