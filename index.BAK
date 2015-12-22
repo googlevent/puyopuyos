@@ -6,10 +6,11 @@
 	<meta name="keyword" content="">
 	<title>home</title>
 	<link rel="stylesheet" href="./css/puyo.css">
-	<script src="./js/enchant.js"></script>
-	<script src="./js/main.js"></script>
 	<!-- JQueryのinstall -->
 	<script src="./js/jquery.min.js"></script>
+	<script src="./js/enchant.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/imagepack.js"></script>
 	<!-- 画像選択部分のアコーディオン -->
 	<script>
 		$(function(){
@@ -18,32 +19,17 @@
 			});
 		});
 	</script>
-
 	<script type="text/javascript">
-		<!--
-		function insertRow(id){
-		//テーブル取得
-		var table=document.getElementById(id);
-		//行を行末に追加
-		var row = table.insertRow(-1);
-		user=document.username.name.value;
-		//セルの挿入
-		var cell1=row.insertCell(-1);
-		var cell2=row.insertCell(-1);
-		var cell3=row.insertCell(-1);
-		//行数取得
-		var row_len = table.rows.length;
-		cell1.innerHTML=(row_len-1);
-		cell2.innerHTML=user;
-		cell3.innerHTML=FPS;
+	function getUsers(){
+		var usern = document.username.name.value;
+		return usern;
 	}
-</script>
-<!--<style>body{margin:100;padding:100;}</style>-->
+	</script>
 </head>
 <body>
 	<div id="content">
 		<div id="timely">
-			<img src="./img/hakodot2.png">
+			<div id="playerimg"><img src="./img/hakodot2.png"></div>
 			<ul>
 				<li>プレイヤー名</li>
 				<li>プヨ削除数</li>
@@ -58,18 +44,18 @@
 				<table>
 					<tr>
 						<td>プレイヤー名</td>
-						<td><input type="text" name="name" size="30" maxlength="20"><input type="button" value="確定" onClick="location.reload();"/></td>
+						<td><input type="text" name="name" size="30" maxlength="20"><input type="button" value="確定" onClick="getUsers();"/></td>
 					</tr>
 				</table>
 			</form>
-			<form>
+			<form name="difflevel">
 				<table>
 					<tr>
 						<td>難易度 選択</td>
 						<td>
-							<input type="radio" name="level" value="level1">level1
-							<input type="radio" name="level" value="level2">level2
-							<input type="radio" name="level" value="level3">level3
+							<input type="radio" name="level1" value="level1" onClick="getdifflevel(1);"/>level1
+							<input type="radio" name="level2" value="level2" onClick="getdifflevel(3);"/>level2
+							<input type="radio" name="level3" value="level3" onClick="getdifflevel(6);"/>level3
 						</td>
 					</tr>
 				</table>
@@ -79,46 +65,30 @@
 				<div class="bef">画像を選択</div>
 				<div class="aft">
 					<ul>
-						<li><img class="imbef" src="./img/hakodot.png"></li>
-						<li><img class="imbef" src="./img/hakodot2.png"></li>
-						<li><img class="imbef" src="./img/hakodot3.png"></li>
-						<li><img class="imbef" src="./img/hakodot4.png"></li>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<br>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<br>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<br>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-						<br>
-						<li><img class="imbef" src="./img/hakodot5.png"></li>
-
+						<div id="aftul">
+						</div>
 					</ul>
-					<img id="imright" src="./img/right.png">
-					<img id="imleft" src="./img/left.png">
+					<img id="imdown" src="./img/down.png">
 				</div>
 			</div>
 			<br>
 
 			<!-- ランキング表 -->
 			<div id="rank">
-				<table id="ranking">
+				<table id="ranking" class="tablesorter">
+				<thead>
 					ランキング表
 					<tr>
 						<th>順位</th>
 						<th>プレイヤー名</th>
 						<th>プヨ削除数</th>
 					</tr>
-						<th> </th>
-						<th> </th>
-						<th> </th>
-					<tr>
+				</thead>
+				<tbody>
+					<tr style="display:none;">
+						<td /><td /><td />
 					</tr>
+				</tbody>
 				</table>
 			</div>
 			<!-- ここまでランキング表 -->
