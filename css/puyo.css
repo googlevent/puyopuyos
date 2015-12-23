@@ -22,6 +22,7 @@ div{
 	display: inline-block;
 }
 /*********************************************/
+/*index*/
 /*position: absoluteを指定して画像を中央に配置*/
 #background{
 	display: block;
@@ -47,13 +48,42 @@ opacity: .75;
 	opacity: .75;
 }
 
+#topback{
+	position: absolute;
+	width:100%;
+	height: 45px;
+	background-color: #ffa3a3;
+}
+
+#topbar{
+	position: absolute;
+	width: 680px;
+	height: 45px;
+	top:0;
+	/*background-color: red;*/
+}
+#topcontents ul{
+	list-style-type: none;
+}
+
+#topcontents li{
+	text-align: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	height: 100%;
+	width: 170px;
+	/*background-color: red;*/
+}
+
 #content{
 	width: 680px;
 	height: 100%;
 	display: block;
 	float: top;
 	margin: 0 auto;
-	padding: 30px 15px 15px 15px;
+	padding: 70px 15px 15px 15px;
 
 }
 
@@ -225,6 +255,8 @@ opacity: .75;
 
 #imcontents #title{
 	font-size: 120px;
+	position: relative;
+	top: -40px;
 }
 
 #imcontents img{
@@ -234,6 +266,13 @@ opacity: .75;
 	width: 100%;
 }
 
+#imcontents a{
+	text-decoration: none;
+	color: black;
+	font-size: 21px;
+}
+
+/*観覧車*/
 #imcontents #kanransya{
 	width: 100px;
 	height: 111px;
@@ -246,8 +285,24 @@ opacity: .75;
 	left: 225;
 	-webkit-transition: .3s;
 	transition: .3s;
+}
+
+#kanransya:hover + #textkanransya{
+	color: #ffa3d1;
+	opacity: 1.0;
+	-webkit-transition: .35s;
+	transition: .35s;	
 
 }
+
+#textkanransya{
+	position: absolute;
+	left: 255px;
+	bottom: 165px;
+	opacity: 0.0;
+}
+
+/*小さいビル*/
 @keyframes size_animation2{
 	0{
 		width: 82px;
@@ -281,6 +336,23 @@ opacity: .75;
 	animation-iteration-count: 1; 
 }
 
+
+#sbill:hover + #textsbill{
+	color: #ffa3d1;
+	opacity: 1.0;
+	-webkit-transition: 1s;
+	transition: 1s;	
+
+}
+
+#textsbill{
+	position: absolute;
+	left: 355px;
+	bottom: 220px;
+	opacity: 0.0;
+}
+
+/*大きいビル*/
 #imcontents #bill{
 	width: 73px;
 	height: 332px;
@@ -295,6 +367,7 @@ opacity: .75;
 	transition: .3s;
 }
 
+/*東京タワー*/
 #imcontents #tower{
 	width: 105px;
 	height: 282px;
@@ -308,6 +381,8 @@ opacity: .75;
 	-webkit-transition: .3s;
 	transition: .3s;
 }
+
+/*ドロイド君*/
 @keyframes droid_walk{
 	0{
 		transform:rotateZ(-15deg);

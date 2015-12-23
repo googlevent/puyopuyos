@@ -6,6 +6,7 @@ var MAX_COL=10;
 var CELL_SIZE=30;
 var PUYOS_IMG="puyos4.png"
 var score=0;
+var speed=0.01;
 window.onload=function(){
 	var game=new Game(300,450);
 	game.fps=FPS;
@@ -13,120 +14,130 @@ window.onload=function(){
 	game.preload(PUYOS_IMG);
 	game.preload('gameover.png');
 	game.keybind(32,'a');
-	game.score=score;
-	var scoreLabel = new Label("SCORE:0");
-	scoreLabel.font="32px Tahoma";
-	scoreLabel.color="black";
-	scoreLabel.x=80;
-	scoreLabel.y=0;
-	game.rootScene.addChild(scoreLabel);
-	var time_label=new Label();
-	time_label.x=80
-	time_label.y=40;
-	time_label.font="32px Tahoma";
-	time_label.color="black";
-	time_label.addEventListener(enchant.Event.ENTER_FRAME, function(){
-		var progress = parseInt(game.frame/game.fps);
-		time=LIMIT_TIME-parseInt(game.frame/game.fps)+"";
-		this.text="リミット:"+time;
-		if(time<0){
-			changeToGameOverScene();
-		}
-	});
-	game.rootScene.addChild(time_label);
 	game.onload=function(){
-		var titleScene = new Scene();
-		//タイトル画面
-		var titleAnim=new Sprite(300,450);
-		titleAnim.image = game.assets['startgame.png'];
-		titleAnim.addEventListener('touchstart',function(){
-			game.popScene();
-		});
-		titleScene.addChild(titleAnim);
 
-		function insertRow(){
-			//テーブル取得
-			var table=document.getElementById("ranking");
-			//行を行末に追加
-			var row = table.insertRow(-1);
-			user=document.username.name.value;
-			//セルの挿入
-			var cell1=row.insertCell(-1);
-			var cell2=row.insertCell(-1);
-			var cell3=row.insertCell(-1);
-			//行数取得
-			var row_len = table.rows.length;
-			cell1.innerHTML=(row_len-1);
-			cell2.innerHTML=user;
-			cell3.innerHTML=game.score;
-		}	
-		var scene=game.rootScene;
-		//game.scene.addChild(scoreLabel);
-		var map=new Map(30,30);
-		var field = new Array(MAX_ROW);
-		for (var i=0;i<field.length;i++){
-			var temp_array=[];
-			for(var j=0;j<MAX_COL;j++){
-				if(j==0 || j==MAX_COL-1||i==MAX_ROW-1) temp_array[j]=0;
-				else temp_array[j]=-1;
-			}
-			field[i]=temp_array;
-		}
-		map.image=game.assets[PUYOS_IMG];
-		map.loadData(field);
-		scene.addChild(map);
-		var pair=createPair(game,map,field);
-		scene.addChild(pair);		
-		scene.addEventListener("enterframe",function(){
-			if(!pair.isFall){
-				scene.removeChild(pair);
-				freeFall(field);
-				game.score=chain(field);
-				scoreLabel.text="SCORE:"+game.score;
-				map.loadData(field);
-				if(field[2][3] != -1){
-					changeToGameOverScene();
-				}else{
-					pair=createPair(game,map,field);
-					scene.addChild(pair);
+		var createStartScene=function(){
+			var scene = new Scene();
+			//タイトル画面
+			var titleAnim=new Sprite(300,450);
+			titleAnim.image = game.assets['startgame.png'];
+			scene.addChild(titleAnim);
+			titleAnim.addEventListener('touchstart',function(){
+				user=getUsers();
+				if(user!=""){
+				game.replaceScene(createGameScene());
 				}
+			});
+			
+			return scene;
+		};
+
+		var createGameScene=function(){
+			difflevel=getdifflevel()
+			var gameScene=new Scene();
+			game.score=0;
+			score=0;
+			var scoreLabel = new Label("SCORE:0");
+			scoreLabel.font="32px Tahoma";
+			scoreLabel.color="black";
+			scoreLabel.x=80;
+			scoreLabel.y=0;
+			gameScene.addChild(scoreLabel);
+			LIMIT_TIME=120;
+			var time_label=new Label();
+			time_label.x=80
+			time_label.y=40;
+			time_label.font="32px Tahoma";
+			time_label.color="black";
+			game.frame=0;
+			time_label.addEventListener(enchant.Event.ENTER_FRAME, function(){
+				var progress = parseInt(game.frame/game.fps);
+				time=LIMIT_TIME-parseInt(game.frame/game.fps)+"";
+				this.text="リミット:"+time;
+				if(time<=0){
+					game.replaceScene(createGameoverScene());
+					insertRow();
+				}
+			});
+			gameScene.addChild(time_label);
+			var map=new Map(30,30);
+			var field = new Array(MAX_ROW);
+			for (var i=0;i<field.length;i++){
+				var temp_array=[];
+				for(var j=0;j<MAX_COL;j++){
+					if(j==0 || j==MAX_COL-1||i==MAX_ROW-1) temp_array[j]=0;
+					else temp_array[j]=-1;
+				}
+				field[i]=temp_array;
 			}
-		});
-		game.pushScene(titleScene);
-		LIMIT_TIME=120;
+			map.image=game.assets[PUYOS_IMG];
+			map.loadData(field);
+			gameScene.scene.addChild(map);
+			var pair=createPair(game,map,field);
+			gameScene.addChild(pair);		
+			gameScene.addEventListener("enterframe",function(){
+				if(!pair.isFall){
+					gameScene.removeChild(pair);
+					freeFall(field);
+					game.score=chain(field);
+					scoreLabel.text="SCORE:"+game.score;
+					map.loadData(field);
+					if(field[2][3] != -1){
+						game.replaceScene(createGameoverScene());
+						insertRow()
+					}else{
+						pair=createPair(game,map,field);
+						gameScene.addChild(pair);
+					}
+				}
+			});
+			return gameScene;
+		};
 
-	};
+		var createGameoverScene = function(){
+			var overScene = new Scene();
+			var gameov=new Sprite(300,450);
+			gameov.image=game.assets['gameover.png'];
+			overScene.addChild(gameov);
+			var retryLabel = new Label('もう一度遊ぶならクリック');
+			retryLabel.color='#fff';
+			retryLabel.x=50;
+			retryLabel.y=410;
+			retryLabel.font='20px sans-serif';
+			overScene.addChild(retryLabel);
+			retryLabel.addEventListener(Event.TOUCH_START,function(e){
+				game.replaceScene(createStartScene());
+			});
+			return overScene;
+		};
+		game.replaceScene(createStartScene());
+	}
 	game.start();
-	
-	function insertRow(){
-		//テーブル取得
-		var table=document.getElementById("ranking");
-		//行を行末に追加
-		var row = table.insertRow(-1);
-		user=document.username.name.value;
-		//セルの挿入
-		var cell1=row.insertCell(-1);
-		var cell2=row.insertCell(-1);
-		var cell3=row.insertCell(-1);
-		//行数取得
-		var row_len = table.rows.length;
-		cell1.innerHTML=(row_len-1);
-		cell2.innerHTML=user;
-		cell3.innerHTML=game.score;
-	}
-
-	function changeToGameOverScene(){
-		game.stop();
-		insertRow()
-		var gameov=new Sprite(300,450);
-		gameov.image=game.assets['gameover.png'];
-		gameov.addEventListener('touchstart',function(){
-		game.pushScene(titleScene);
-		});
-		game.rootScene.addChild(gameov);
-	}
-
 }
+
+function getdifflevel(id){
+	speed=id;
+}
+
+
+
+function insertRow(){
+	//テーブル取得
+	var table=document.getElementById("ranking");
+	//行を行末に追加
+	var row = table.insertRow(-1);
+	//user=document.username.name.value;
+	//セルの挿入
+	var cell1=row.insertCell(-1);
+	var cell2=row.insertCell(-1);
+	var cell3=row.insertCell(-1);
+	//行数取得
+	var row_len = table.rows.length;
+	cell1.innerHTML=(row_len-1);
+	cell2.innerHTML=user;
+	cell3.innerHTML=score;
+}
+
 
 
 
