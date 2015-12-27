@@ -16,9 +16,10 @@ body{
 	line-height: 1.5em;
 	font-size: 0.95em;
 	overflow-x: hidden;
-	background-image: url("./img/178703.jpg");
+/*	background-image: url("./img/178703.jpg");
 	background-position: center;
 	background-size: cover;
+*/	background-color: white;
 
 }
 
@@ -33,6 +34,15 @@ div{
 	/*display: block;*/
 	/*position: absolute;*/
 	overflow: hidden;
+}
+
+#backimg_droid{
+	right: -200;
+	bottom: 0;
+	position: fixed;
+	display: block;
+	z-index: -1000000;
+	height: 100%;
 }
 
 #menu{
@@ -55,7 +65,7 @@ div{
 	font-size: 80px;
 	transform: rotateZ(-5deg);
 	z-index: -100000;
-	color: black;
+	color: white;
 }
 #menu ul{
 	list-style-type: none;
@@ -103,6 +113,7 @@ div{
 	float: top;
 	margin: 0 auto;
 	padding: 50px 15px 15px 15px;
+	background-color: white;
 
 }
 
@@ -379,9 +390,9 @@ div{
 }
 
 #imcontents #bill:hover{
-	width: 93px;
-	height: 422px;
-	left: 475px;
+	width: 83px;
+	height: 380px;
+	left: 480px;
 	-webkit-transition: .3s;
 	transition: .3s;
 }
