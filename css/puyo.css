@@ -175,13 +175,13 @@ div{
 }
 
 #imagepack .bef:hover{
-	background: #eee;
+	background: #fff;
 }
 
 #imagepack .aft{
 	width: 310px;
 	height: 225px;
-	background:#f2f2f2;
+	background:#fff;
 	border:#666 1px solid;
 	display:none;
 	/*display: block;*/
