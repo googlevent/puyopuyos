@@ -11,6 +11,8 @@
 	<script src="./js/enchant.js"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/imagepack.js"></script>
+	<script src="./js/indexback.js"></script>
+
 	<!-- 画像選択部分のアコーディオン -->
 	<script>
 		$(function(){
@@ -26,8 +28,14 @@
 		}
 	</script>
 </head>
-<body style="background-color: rgb(45, 45, 45);">
-	<img src="img/android-wallpaper-2011-june-15-300x225.jpg" id="backimg_droid">
+<body style="background-color: #f4ffff;" onload="init();">
+	<canvas id="canvas" width=700 height=500></canvas>
+	<script>
+	// canvasサイズをスクリーンサイズに合わせる
+		$('#canvas').attr('width', window.parent.screen.width);
+		$('#canvas').attr('height',window.parent.screen.height);   
+	</script>
+	<!-- <img src="img/android-wallpaper-2011-june-15-300x2252.j pg" id="backimg_droid"> -->
 	<div id="menu">
 		<a href="top.html"><p id="icon">DRORiS</p></a>
 		<ul>
