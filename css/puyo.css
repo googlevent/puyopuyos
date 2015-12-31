@@ -29,7 +29,7 @@ div{
 /*********************************************/
 /*index*/
 #canvas{
-	position: absolute;
+	position: fixed;
 	/*background-color: pink;*/
 	display: block;
 	z-index: -100000;
