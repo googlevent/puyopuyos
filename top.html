@@ -8,8 +8,17 @@
 	<link rel="stylesheet" href="./css/puyo.css">
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/mouseposition.js"></script>
-</head>
-<body>
+	<script src="./js/topback.js"></script>
+	<style>
+	</style>
+	</head>
+<body onload="init();">
+	<canvas id="topcanvas" width=700 height=500></canvas>
+		<script>
+	// canvasサイズをスクリーンサイズに合わせる
+		$('#topcanvas').attr('width', window.parent.screen.width);
+		$('#topscanvas').attr('height',window.parent.screen.height);   
+	</script>
 	<div id="backgroundimg">
 		<img src="img/background2.png">
 	</div>
@@ -26,10 +35,12 @@
 		</a>
 		<a href="content.html">
 			<img src="img/bill.png" id="bill">
-			<!-- <p id="textbill">問い合わせ</p> -->
+			<p id="textbill">問い合わせ</p>
 		</a>
-
-		<img src="img/tower.png" id="tower">
+		<a href="qanda.html">
+			<img src="img/tower.png" id="tower">
+			<p id="texttower">Q &amp; A</p>
+		</a>
 		<div id="dro">
 			<img src="img/droidkun2.png" id="droid" style="left: 100px;">
 		</div>

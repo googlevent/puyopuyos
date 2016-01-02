@@ -34,7 +34,7 @@ function draw(){
 		cloudPositionX[i] += 1;
 		cloudPositionY[i] += Math.sin(cloudPositionX[i]/10);
 		if(cloudPositionX[i] > screenX){
-			cloudPositionX[i] = -200;
+			cloudPositionX[i] = -130;
 		}
 	}
 }
