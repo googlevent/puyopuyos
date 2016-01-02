@@ -8,7 +8,7 @@ var count;
 //cloud
 var cloudNUM = 15;
 var image = new Image();
-image.src = "./img/105681b.png";
+image.src = "./img/1056812.png";
 var cloudSize = new Array(cloudNUM);
 var cloudPositionX = new Array(cloudNUM);
 var cloudPositionY = new Array(cloudNUM);

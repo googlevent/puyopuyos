@@ -16,10 +16,7 @@ body{
 	line-height: 1.5em;
 	font-size: 0.95em;
 	overflow-x: hidden;
-/*	background-image: url("./img/178703.jpg");
-	background-position: center;
-	background-size: cover;
-	*/	background-color: white;
+	background-color: #f4ffff;
 
 }
 
@@ -32,7 +29,7 @@ div{
 	position: fixed;
 	/*background-color: pink;*/
 	display: block;
-	z-index: -100000;
+	z-index: -1;
 }
 
 #topcanvas{
@@ -476,5 +473,69 @@ div{
 	animation-timing-function: liner;
 	animation-iteration-count: infinite; 	
 }
+
+/*******************************************/
+/*q and a*/
+.qa a{
+	text-decoration: none;
+	color: black;
+}
+
+.qa a:hover{
+	border-bottom: 1px solid black;
+	padding-bottom: 1px;
+}
+
+.qa a:active{
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.qa #q{
+	list-style-type: none;
+	margin-bottom: 500px;
+	font-size: 17px;
+}
+
+.qa #q li{
+	background-image: url("../img/droidkunb.png");
+	background-repeat: no-repeat;
+	background-size: 20px;
+	padding-left: 29px;
+	margin-bottom: 15px;
+	/*background-color: pink;*/
+}
+
+.qa #a{
+	list-style-type: none;
+}
+.qa #a a{
+	border-bottom: 1px solid;
+	padding-bottom: 1px;
+}
+
+.qa #a a:hover{
+	color: red;
+}
+.qa #a li p{
+	background-image: url("../img/droidkunb.png");
+	background-repeat: no-repeat;
+	background-size: 20px;
+	padding-left: 29px;
+	margin-bottom: 15px;
+	font-size: 18px;
+}
+
+.qa #a li{
+	margin-bottom: 100px;
+}
+.qa img{
+	padding-top: 13px;
+	width: 170px;
+}
+
+
+
+
 
 
