@@ -11,39 +11,39 @@
 	<script src="./js/topback.js"></script>
 	<style>
 	</style>
-	</head>
+</head>
 <body onload="init();">
 	<canvas id="topcanvas" width=700 height=500></canvas>
-		<script>
+	<script>
 	// canvasサイズをスクリーンサイズに合わせる
-		$('#topcanvas').attr('width', window.parent.screen.width);
-		$('#topscanvas').attr('height',window.parent.screen.height);   
-	</script>
-	<div id="backgroundimg">
-		<img src="img/background2.png">
+	$('#topcanvas').attr('width', window.parent.screen.width);
+	$('#topscanvas').attr('height',window.parent.screen.height);   
+</script>
+<div id="backgroundimg">
+	<img src="img/background2.png">
+</div>
+<img src="img/line.png" id="line">
+<div id="imcontents">
+	<p id="title">DRORiS</p>
+	<a href="howto.html">
+		<img src="img/kanransya.png" id="kanransya">
+		<p id="textkanransya">遊び方</p>
+	</a>
+	<a href="index.html">
+		<img src="img/sbill.png" id="sbill">
+		<p id="textsbill">ゲーム</p>
+	</a>
+	<a href="contact.html">
+		<img src="img/bill.png" id="bill">
+		<p id="textbill">問い合わせ</p>
+	</a>
+	<a href="qanda.html">
+		<img src="img/tower.png" id="tower">
+		<p id="texttower">Q &amp; A</p>
+	</a>
+	<div id="dro">
+		<img src="img/droidkun2.png" id="droid" style="left: 100px;">
 	</div>
-	<img src="img/line.png" id="line">
-	<div id="imcontents">
-		<p id="title">DRORiS</p>
-		<a href="howto.html">
-			<img src="img/kanransya.png" id="kanransya">
-			<p id="textkanransya">遊び方</p>
-		</a>
-		<a href="index.html">
-			<img src="img/sbill.png" id="sbill">
-			<p id="textsbill">ゲーム</p>
-		</a>
-		<a href="contact.html">
-			<img src="img/bill.png" id="bill">
-			<p id="textbill">問い合わせ</p>
-		</a>
-		<a href="qanda.html">
-			<img src="img/tower.png" id="tower">
-			<p id="texttower">Q &amp; A</p>
-		</a>
-		<div id="dro">
-			<img src="img/droidkun2.png" id="droid" style="left: 100px;">
-		</div>
-	</div>
+</div>
 </body>
 </html>
