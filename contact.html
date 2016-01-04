@@ -10,12 +10,12 @@
 	<script src="./js/contactback.js"></script>
 </head>	
 <body onload="init();">
-	<canvas id="canvas" width=700 height=500></canvas>
+	<canvas id="canvas" width=500 height=200></canvas>
 	<script>
 	// canvasサイズをスクリーンサイズに合わせる
 	$('#canvas').attr('width', window.parent.screen.width);
-	$('#canvas').attr('height',window.parent.screen.height);   
-	</script>
+	$('#canvas').attr('height',window.parent.screen.height); 
+</script>
 
 <div id="menu">
 	<a href="top.html"><p id="icon">DRORiS</p></a>
@@ -58,7 +58,7 @@
 			</select>
 		</p>
 		<p>内容を入力してください。</p>
-		<textarea name="comment" cols="70" rows="15"></textarea>
+		<textarea name="comment" cols="70" rows="15" placeholder="コメント"></textarea>
 		<p><input type="submit" value="送信する"></p>
 
 	</form>

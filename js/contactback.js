@@ -50,14 +50,15 @@ function setup(){
 		if ( canvas.getContext ){
 			context = canvas.getContext("2d");
 
+			setup();
+			soundSet();
 		//**************************************
 		document.onmousedown = onDocMouseDown;
 		document.onmouseup   = onDocMouseUp;
 		document.onmousemove = onDocMouseMove;
 		//**************************************
-		setup();
-		soundSet();
 		setInterval( draw , 33 );
+
 	}
 
 }
@@ -66,7 +67,7 @@ function draw(){
 	// console.log(mouseX+" , "+mouseY);
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	count++;
-	console.log(count);
+	// console.log(count);
 	//ballon
 	if(count%500 == 0){
 		for(var i=0; i<ballonNUM; i++){
@@ -83,6 +84,7 @@ function draw(){
 		ballonPositionY[i] -= ballonVecY[i];
 		ballonSize[i] += (ballonSizePlus[i] - ballonSize[i])/30;
 	}
+
 }
 
 //**********************************
@@ -121,10 +123,11 @@ function soundEffect(){
 //**********************************
 // マウスイベント
 //**********************************
+
 function mouseEve( e ){
 	var ev = e ? e : window.event;
 	mouseX = ev.clientX;
-	mouseY = ev.clientY;	
+	mouseY = ev.clientY;
 }
 
 function onDocMouseMove( e ){
