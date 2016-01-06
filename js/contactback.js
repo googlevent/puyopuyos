@@ -52,11 +52,13 @@ function setup(){
 
 			setup();
 			soundSet();
+
 		//**************************************
 		document.onmousedown = onDocMouseDown;
 		document.onmouseup   = onDocMouseUp;
 		document.onmousemove = onDocMouseMove;
 		//**************************************
+		
 		setInterval( draw , 33 );
 
 	}
