@@ -38,22 +38,22 @@ window.onload=function(){
 			game.score=0;
 			score=0;
 			var scoreLabel = new Label("SCORE:0");
-			scoreLabel.font="32px Tahoma";
+			scoreLabel.font="36px MyFont";
 			scoreLabel.color="black";
-			scoreLabel.x=80;
+			scoreLabel.x=75;
 			scoreLabel.y=0;
 			gameScene.addChild(scoreLabel);
 			LIMIT_TIME=120;
 			var time_label=new Label();
-			time_label.x=80
+			time_label.x=75
 			time_label.y=40;
-			time_label.font="32px Tahoma";
+			time_label.font="36px MyFont";
 			time_label.color="black";
 			game.frame=0;
 			time_label.addEventListener(enchant.Event.ENTER_FRAME, function(){
 				var progress = parseInt(game.frame/game.fps);
 				time=LIMIT_TIME-parseInt(game.frame/game.fps)+"";
-				this.text="リミット:"+time;
+				this.text="LIMIT:"+time;
 				if(time<=0){
 					game.replaceScene(createGameoverScene());
 					insertRow();
@@ -133,7 +133,7 @@ function insertRow(){
 	var cell3=row.insertCell(-1);
 	//行数取得
 	var row_len = table.rows.length;
-	cell1.innerHTML=(row_len-1);
+	cell1.innerHTML=(row_len-2);
 	cell2.innerHTML=user;
 	cell3.innerHTML=score;
 }
