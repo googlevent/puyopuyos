@@ -6,7 +6,7 @@ var MAX_COL=10;
 var CELL_SIZE=30;
 var PUYOS_IMG="puyos4.png"
 var score=0;
-var speed=0.01;
+var speed=1;
 window.onload=function(){
 	var game=new Game(300,450);
 	game.fps=FPS;
@@ -27,13 +27,13 @@ window.onload=function(){
 				if(user!=""){
 				game.replaceScene(createGameScene());
 				}
+				speed=getspeed();
 			});
 			
 			return scene;
 		};
 
 		var createGameScene=function(){
-			difflevel=getdifflevel()
 			var gameScene=new Scene();
 			game.score=0;
 			score=0;
@@ -115,11 +115,6 @@ window.onload=function(){
 	game.start();
 }
 
-function getdifflevel(id){
-	speed=id;
-}
-
-
 
 function insertRow(){
 	//テーブル取得
@@ -136,6 +131,16 @@ function insertRow(){
 	cell1.innerHTML=(row_len-2);
 	cell2.innerHTML=user;
 	cell3.innerHTML=score;
+}
+
+function getspeed(){
+	var radioList=document.getElementsByName('level1');
+	for(var i=0;i<radioList.length;i++){
+		if(radioList[i].checked){
+			sp=radioList[i].value;
+		}
+	}
+	return sp;
 }
 
 
@@ -189,7 +194,7 @@ function createPair(game,map,field){
 		}
 
 		newY= formNum==2 ? p0.y+CELL_SIZE : p1.y+CELL_SIZE;
-		var vy = Math.floor(game.input.down ? game.fps/10 : game.fps/1);
+		var vy = Math.floor(game.input.down ? game.fps/10 : game.fps/speed);
 		if(game.frame%vy==0){
 			if(!map.hitTest(this.x+p0.x,this.y+newY)&& !map.hitTest(this.x+p1.x, this.y+newY)){
 				this.y +=CELL_SIZE;

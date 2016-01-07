@@ -25,9 +25,20 @@
 			var usern = document.username.name.value;
 			var output = document.getElementById('user_output');
 			output.value=usern
+			var radioList=document.getElementsByName('level1');
+			for(var i=0;i<radioList.length;i++){
+				if(radioList[i].checked){
+				var speed=radioList[i].value;
+				}
+			}
 			return usern;
 		}
 	</script>
+	<!--<script type="text/javascript">
+		function getdifflevel(id){
+			speed=id;
+		}
+	</script>-->
 </head>
 <body>
 	<canvas id="canvas" width=700 height=500></canvas>
@@ -90,9 +101,10 @@
 					<tr>
 						<td>難易度 選択</td>
 						<td>
-							<input type="radio" name="level1" value="level1" checked="checked" onClick="getdifflevel(1);"/>level1
-							<input type="radio" name="level2" value="level2" onClick="getdifflevel(3);"/>level2
-							<input type="radio" name="level3" value="level3" onClick="getdifflevel(6);"/>level3
+							<input type="radio" name="level1" value="1" checked>level1
+							<input type="radio" name="level1" value="3">level2
+							<input type="radio" name="level1" value="6">level3
+						
 						</td>
 					</tr>
 				</table>
