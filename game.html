@@ -48,8 +48,24 @@
    </div>
  </div>
 
- <div id="content" style="width: 350px; padding: 100px 200px 100px 230px;">
+ <div id="upvideo" onClick="rem();">Skip</div>
+ <div id="vi">
+  <video src="img/droidmov.mp4" autoplay></video>
+</div>
 
+<script>
+  var v = document.getElementById("video");
+  console.log(v.ended);
+
+  function rem(){
+    console.log("click!");
+    $("#vi").remove();
+    $("#upvideo").remove();
+  }
+</script>
+
+
+<div id="content" style="width: 350px; padding: 100px 200px 100px 230px;">
 
   <!-- プレイヤー名、難易度、画像 -->
   <div id="preference_rank">
