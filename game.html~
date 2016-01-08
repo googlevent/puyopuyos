@@ -1,0 +1,155 @@
+<!DOCTYPE>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keyword" content="">
+	<title>home</title>
+	<link rel="stylesheet" href="./css/puyo.css">
+	<!-- JQueryのinstall -->
+	<script src="./js/jquery.min.js"></script>
+	// <script src="./js/enchant.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/imagepack.js"></script>
+	<script src="./js/linkscroll.js"></script>
+
+	<!-- 画像選択部分のアコーディオン -->
+	<script>
+		$(function(){
+			$("#imagepack .bef").on("click", function() {
+				$(this).next().slideToggle();
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		function getUsers(){
+			var usern = document.username.name.value;
+			var output = document.getElementById('user_output');
+			output.value=usern
+			var radioList=document.getElementsByName('level1');
+			for(var i=0;i<radioList.length;i++){
+				if(radioList[i].checked){
+					var speed=radioList[i].value;
+				}
+			}
+			return usern;
+		}
+	</script>
+	<!--<script type="text/javascript">
+		function getdifflevel(id){
+			speed=id;
+		}
+	</script>-->
+</head>
+<body>
+	<div id="menu">
+		<a href="index.html" id="title">DRORiS</a>
+		<div id="inmenu">
+			<!-- <a href="index.html"><p id="icon">DRORiS</p></a> -->
+			<a href="howto.html" style="left: 0px;">遊び方</a>
+			<a href="" style="left: 150px;">ゲーム</a>
+			<a href="contact.html" style="left: 300px;">問い合わせ</a>
+			<a href="qanda.html" style="left: 450px;">Q &amp; A</a>
+		</div>
+	</div>
+
+	<div id="content">
+
+		<!-- プレイヤー名表示 -->
+	<!--
+	<div id="timely">
+		<div id="playerimg"><img src="./img/hakodot2.png"></div>
+		<from>
+			<p>プレイヤー名:<output id="user_output">？？？</output></p>
+		</from>
+	</div>
+-->
+
+<!-- プレイヤー名、難易度、画像 -->
+<div id="preference_rank">
+	<!-- プレイヤー名追加 -->
+	<div class="card">
+		<form name="username">
+			<h4>①プレイヤー名を入力してください。</h4>
+			<input type="text" name="name" id="user" size="30" maxlength="20" style="height: 23px;">
+			<a href="#second"><input type="button" value="確定" onClick="getUsers();"></a>
+		</form>
+	</div>
+
+	<div class="space"></div>
+	<div class="card">
+		<form name="difflevel">
+			<table>
+				<tr>
+					<h4 id="second">②難易度を選択してください。</h4>
+
+					<td>
+						<input type="radio" name="level1" value="1" checked>LEVEL 1
+						<input type="radio" name="level1" value="3">LEVEL 2
+						<input type="radio" name="level1" value="6">LEVEL 3
+
+					</td>
+				</a>
+			</tr>
+		</table>
+	</form>
+</div>
+<div class="space"></div>
+<div class="card">
+	<div id="imagepack">
+		<h4 id="third">③画像を選択してください。</h4>
+		<div class="bef">Click</div>
+		<div class="aft">
+			<ul>
+				<div id="aftul"></div>
+			</ul>
+			<img id="imdown" src="./img/down.png">
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="space"></div>
+<div class="card">
+	<a href="#puyo"><span style="background-color: #ffffc6;">ゲームスタート</span></a>
+	<a href="howto.html"><span style="background-color: #e5ffcc;">遊び方を見る</span></a>
+</div>
+
+<div class="space"></div>
+<!-- game stage -->
+<div id="puyo">
+	<div id="enchant-stage"></div>
+</div>
+
+
+
+<!-- ランキング表 -->
+	<!--
+	<div id="rank">
+		<table id="ranking" class="tablesorter">
+			<thead>
+				ランキング表
+				<tr>
+					<th>順番</th>
+					<th>プレイヤー名</th>
+					<th>プヨ削除数</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="display:none;">
+					<td /><td /><td />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+-->
+<!-- ここまでランキング表 -->
+</div>
+</div>
+<div style="margin-bottom: 100000000px;">
+	<footer>
+		<!-- <p>Copyright (C) 2015-2016 DRORiZM(株)</p> -->
+	</footer>
+
+</body>
+</html>

@@ -10,28 +10,34 @@ body{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	color: black;
-	background: white;
-	font-family: MyFont,sans-serif;
+	color: rgb(96, 96, 96);
+	font-family: sans-serif, MyFont;
 	line-height: 1.5em;
 	font-size: 0.95em;
 	overflow-x: hidden;
-	background-color: #f4ffff;
+	background-color: white;
+	background-image: url("../img/background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+
 }
 
 div{
 	display: inline-block;
 }
 
+a{
+	color: rgb(96, 96, 96);
+}
+
 /*********************************************/
 footer{
 	text-align: center;
 	margin-bottom: 10px;
-	color: #808080;
+	color: rgb(96, 96, 96);
 }
 
-/*********************************************/
-/*index*/
 #canvas{
 	position: fixed;
 	/*background-color: pink;*/
@@ -45,85 +51,58 @@ footer{
 	display: block;
 	z-index: -1;
 }
-
+/*********************************************/
+/*game*/
 #backgroundimg img{
 	width: 100%;
-	/*height: 100%;*/
-	/*display: block;*/
-	/*position: absolute;*/
 	overflow: hidden;
 }
 
 #menu{
 	position: fixed;
 	display: block;
-	height: 500px;
-	top: 80px;
-	bottom: 0;
-	/*margin-top: auto;*/
-	/*margin-bottom: auto;*/
-	/*background-color: red;*/
-
+	height: 50px;
+	width: 100%;
+	top:0px;
+	background-color: white;
+	border-top: 6px solid rgb(248, 250, 207);
+	border-bottom: 6px solid rgb(248, 250, 207);
+	z-index: 10000;
 }
-#icon{
-	display: block;
-	position: fixed;
-	top: 0;
-	margin-top: 40px;
-	margin-left: 10px;
-	font-size: 80px;
-	transform: rotateZ(-5deg);
-	z-index: -100000;
-	color: black;
-}
-#menu ul{
-	list-style-type: none;
-}
-#menu li img{
-	position: relative;
-	width: 100px;
-	height: 118px;
-	left: -50px;
-}
-
-#menu li p{
-	font-size: 18px;
+#menu #title{
 	position: absolute;
+	font-size: 48px;
+	font-family: MyFont;
+	left: 10px;
+}
+#inmenu{
+	width: 700px;
+	height: 50px;
 	display: block;
-	z-index: 1000;
-	left: 12px;
-	color: black;
+	margin: 0 auto;
+	/*background-color: pink;*/
+}
+#menu a{
+	text-decoration: none;
+	color: rgb(96, 96, 96);
+	height: 50px;
+	position: relative;
+	top: 13px;
+}
+#menu a:hover{
+	color: rgb(240, 230, 140);
 }
 
-#menu li img:hover + p{
-	color: white;
-}
-
-#menu ul #red{
-	transform: rotateZ(30deg);
-}
-
-#menu ul #yellow{
-	transform: rotateZ(120deg);
-}
-
-#menu ul #green{
-	transform: rotateZ(90deg);
-}
-
-#menu ul #blue{
-	transform: rotateZ(45deg);
-}
 
 #content{
-	width: 680px;
-	/*height: 100%;*/
+	width: 600px;
 	display: block;
-	float: top;
 	margin: 0 auto;
-	padding: 50px 150px 15px 150px;
-	z-index: 1000;
-	/*background-color: pink;*/
+	padding: 100px 90px;
+	/*padding: 50px 150px 15px 150px;*/
+	/*z-index: 1000;*/
+	background-color: rgba(255, 255, 255, 1);
+	/*background-color: rgba(255, 255, 199, .5);*/
 
 }
 
@@ -150,26 +129,45 @@ footer{
 	align: left;
 	display: inline-block;
 }
-#puyo{
-	/*background: pink;*/
-	width: 300px;
-	height: 500px;
+
+#timely #playername{
 	position: relative;
-	z-index: 100000000;
+	top: -20px;
+	font-size: 20px;
+}
+
+#puyo{
 }
 
 #preference_rank{
-	/*background: yellow;*/
-	position: absolute;
-	margin-left: 20px;
 }
 
-#imagepack{
-
+#content h4{
+	font-size: 18px;
 }
+.space{
+	/*margin-top: 100px;*/
+	display: block;
+	padding-bottom: 100px;
+}
+#content span{
+	font-size: 20px;
+	font-weight: normal;
+	background-color: white;
+	padding: 10px 10px;
+	border-radius: 10px;
+	border: 2px solid rgb(96, 96, 96);
+	color: rgb(96, 96, 96);
+}
+#content span:hover{
+	background-color: rgb(248, 250, 207);
+}
+#content .card a{
+	text-decoration: none;
+}
+
 
 #imagepack .bef{
-	display:block;
 	cursor:pointer;
 	border: 1.5px solid #000;
 	border-radius: 10px;
@@ -179,8 +177,20 @@ footer{
 	text-align: center;
 }
 
-#imagepack .bef:hover{
-	background: #fff;
+#imagepack .bef2{
+	position: relative;
+	cursor:pointer;
+	border: 1.5px solid #000;
+	border-radius: 10px;
+	padding: 2px 8px;
+	width: 79px;
+	text-align: center;
+	opacity: 0;
+	margin-top: 10px;
+}
+
+#imagepack .bef:hover, #imagepack .bef2:hover{
+	background: #eee;
 }
 
 #imagepack .aft{
@@ -189,7 +199,6 @@ footer{
 	background:#fff;
 	border:#666 1px solid;
 	display:none;
-	/*display: block;*/
 	margin: 0;
 	padding: 5px;
 	overflow-y: scroll;
@@ -207,9 +216,10 @@ footer{
 	width: 35px;
 	height: 35px;
 	opacity: 0;
-	position: absolute;
-	left: 140px;
-	bottom: 10px;
+	/*position: absolute;*/
+	position: relative;
+	left: 133px;
+	bottom: -100px;
 }
 
 
@@ -234,8 +244,8 @@ footer{
 }
 
 #rank{
-	position: absolute;
-	top: 370px;
+	/*position: absolute;*/
+	/*top: 370px;*/
 }
 
 #rank table{
@@ -297,6 +307,7 @@ footer{
 	font-size: 120px;
 	position: relative;
 	top: -40px;
+	font-family: MyFont;
 }
 
 #imcontents img{
@@ -308,7 +319,7 @@ footer{
 
 #imcontents a{
 	text-decoration: none;
-	color: black;
+	color: rgb(96, 96, 96);
 	font-size: 21px;
 }
 
@@ -328,7 +339,7 @@ footer{
 }
 
 #kanransya:hover + #textkanransya{
-	color: #ffa3d1;
+	color: rgb(96, 96, 96);
 	opacity: 1.0;
 	-webkit-transition: .35s;
 	transition: .35s;	
@@ -379,7 +390,7 @@ footer{
 
 
 #sbill:hover + #textsbill{
-	color: #ffa3d1;
+	color: rgb(96, 96, 96);
 	opacity: 1.0;
 	-webkit-transition: 1s;
 	transition: 1s;	
@@ -417,7 +428,7 @@ footer{
 }
 
 #imcontents #bill:hover + #textbill{
-	color: #ffa3d1;
+	color: rgb(96, 96, 96);
 	opacity: 1.0;
 	-webkit-transition: .3s;
 	transition: .3s;	
@@ -446,7 +457,7 @@ footer{
 }
 
 #imcontents #tower:hover + #texttower{
-	color: #ffa3d1;
+	color: rgb(96, 96, 96);
 	opacity: 1.0;
 	-webkit-transition: .3s;
 	transition: .3s;	
@@ -476,7 +487,7 @@ footer{
 /*q and a*/
 .qa a{
 	text-decoration: none;
-	color: black;
+	color: rgb(96, 96, 96);
 }
 
 .qa a:hover{
@@ -511,10 +522,6 @@ footer{
 	color: red;
 }
 .qa #a li p{
-	background-image: url("../img/droidkunb.png");
-	background-repeat: no-repeat;
-	background-size: 20px;
-	padding-left: 29px;
 	margin-bottom: 15px;
 	font-size: 18px;
 }
@@ -529,9 +536,14 @@ footer{
 /*********************************************/
 /*contact*/
 .contact{
+}
+
+.howtop{
+	display: block;
 	position: relative;
-	z-index: 100;
-	left: 100px;
+	left: 350px;
+	top: -450px;
+	z-index: ;
 }
 
 

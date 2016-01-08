@@ -7,42 +7,18 @@
 	<title>Q &amp; A</title>
 	<link rel="stylesheet" href="./css/puyo.css">
 	<script src="./js/jquery.min.js"></script>
-	<script src="./js/qandaback.js"></script>
 	<script src="./js/linkscroll.js"></script>
 </head>
 <body onload="init();">
-	<canvas id="canvas" width=700 height=500></canvas>
-	<script>
-	// canvasサイズをスクリーンサイズに合わせる
-	$('#canvas').attr('width', window.parent.screen.width);
-	$('#canvas').attr('height',window.parent.screen.height);   
 </script>
 <div id="menu">
-	<a href="top.html"><p id="icon">DRORiS</p></a>
-	<ul>
-		<li>
-			<a href="howto.html">
-				<img src="img/droidkun3.png" id="red">
-				<p style="top: 50px; transform: rotateZ(30deg);">遊び方</p>
-			</a>
-		</li>
-		<li>
-			<a href="index.html">
-				<img src="img/droidkun5.png" id="yellow">
-				<p style="top: 170px; transform: rotateZ(28deg);">ゲーム</p>
-			</a>
-		</li>
-		<li>
-			<a href="contact.html">
-				<img src="img/droidkun2.png" id="green">
-				<p style="top: 295px; font-size: 16px; left: 9px;">問い合わせ</p>
-			</a>
-		</li>
-		<li>
-			<img src="img/droidkun4.png" id="blue">
-			<p style="top: 420px; transform: rotateZ(45deg); font-size: 19px;">Q &amp; A</p>
-		</li>
-	</ul>
+	<a href="index.html" id="title">DRORiS</a>
+	<div id="inmenu">
+		<a href="howto.html" style="left: 0px;">遊び方</a>
+		<a href="game.html" style="left: 150px;">ゲーム</a>
+		<a href="contact.html" style="left: 300px;">問い合わせ</a>
+		<a href="" style="left: 450px;">Q &amp; A</a>
+	</div>
 </div>
 <div id="content" class="qa">
 	<h1>Q &amp; A</h1>
@@ -58,26 +34,26 @@
 	</ul>
 	<ul id="a">
 		<li id="a1">
-			<p>ゲームのスタートの仕方がわからなのですが、、</p>
+			<p>Q.ゲームのスタートの仕方がわからなのですが、、</p>
 			遊び方のページに記載されているのでご覧ください。<br>
 			<a href="howto.html">遊び方はこちらから</a>
 		</li>
 		<li id="a2">
-			<p>プレイヤー画像が可愛くありません。。(><)</p>
+			<p>Q.プレイヤー画像が可愛くありません。。(><)</p>
 			お好みの画像を用意することができず、申し訳ございません...><...
 		</li>
 		<li id="a3">
-			<p>二人で対戦はできますか?</p>
+			<p>Q.二人で対戦はできますか?</p>
 			只今は、そのような対戦できるラウンドをご用意しておりません。<br>
 			今後、お客様のご要望にお応えできるように開発を進めていきたいと思います。<br>
 			いつもご意見ありがとうございます。
 		</li>
 		<li id="a4">
-			<p>有料ですか?</p>
-			すべて無料でご利用いただけます。
+			<p>Q.有料ですか?</p>
+			A.すべて無料でご利用いただけます。
 		</li>
 		<li id="a5">
-			<p>この「R2-D2」みたいなキャラクターはなんですか?</p>
+			<p>Q.この「R2-D2」みたいなキャラクターはなんですか?</p>
 			<img src="img/droidkun2.png">
 			<img src="img/r2d2.png" style="width: 150px"><br>
 			確かに似てますねwww<br>
@@ -91,6 +67,5 @@
 <footer>
 	<p>Copyright (C) 2015-2016 DRORiZM(株)</p>	
 </footer>
-
 </body>
 </html>

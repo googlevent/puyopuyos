@@ -6,7 +6,7 @@ var MAX_COL=10;
 var CELL_SIZE=30;
 var PUYOS_IMG="puyos4.png"
 var score=0;
-var speed=0.01;
+var speed=1;
 window.onload=function(){
 	var game=new Game(300,450);
 	game.fps=FPS;
@@ -27,33 +27,33 @@ window.onload=function(){
 				if(user!=""){
 				game.replaceScene(createGameScene());
 				}
+				speed=getspeed();
 			});
 			
 			return scene;
 		};
 
 		var createGameScene=function(){
-			difflevel=getdifflevel()
 			var gameScene=new Scene();
 			game.score=0;
 			score=0;
 			var scoreLabel = new Label("SCORE:0");
-			scoreLabel.font="32px Tahoma";
+			scoreLabel.font="36px MyFont";
 			scoreLabel.color="black";
-			scoreLabel.x=80;
+			scoreLabel.x=75;
 			scoreLabel.y=0;
 			gameScene.addChild(scoreLabel);
 			LIMIT_TIME=120;
 			var time_label=new Label();
-			time_label.x=80
+			time_label.x=75
 			time_label.y=40;
-			time_label.font="32px Tahoma";
+			time_label.font="36px MyFont";
 			time_label.color="black";
 			game.frame=0;
 			time_label.addEventListener(enchant.Event.ENTER_FRAME, function(){
 				var progress = parseInt(game.frame/game.fps);
 				time=LIMIT_TIME-parseInt(game.frame/game.fps)+"";
-				this.text="リミット:"+time;
+				this.text="LIMIT:"+time;
 				if(time<=0){
 					game.replaceScene(createGameoverScene());
 					insertRow();
@@ -115,11 +115,6 @@ window.onload=function(){
 	game.start();
 }
 
-function getdifflevel(id){
-	speed=id;
-}
-
-
 
 function insertRow(){
 	//テーブル取得
@@ -133,9 +128,19 @@ function insertRow(){
 	var cell3=row.insertCell(-1);
 	//行数取得
 	var row_len = table.rows.length;
-	cell1.innerHTML=(row_len-1);
+	cell1.innerHTML=(row_len-2);
 	cell2.innerHTML=user;
 	cell3.innerHTML=score;
+}
+
+function getspeed(){
+	var radioList=document.getElementsByName('level1');
+	for(var i=0;i<radioList.length;i++){
+		if(radioList[i].checked){
+			sp=radioList[i].value;
+		}
+	}
+	return sp;
 }
 
 
@@ -189,7 +194,7 @@ function createPair(game,map,field){
 		}
 
 		newY= formNum==2 ? p0.y+CELL_SIZE : p1.y+CELL_SIZE;
-		var vy = Math.floor(game.input.down ? game.fps/10 : game.fps/1);
+		var vy = Math.floor(game.input.down ? game.fps/10 : game.fps/speed);
 		if(game.frame%vy==0){
 			if(!map.hitTest(this.x+p0.x,this.y+newY)&& !map.hitTest(this.x+p1.x, this.y+newY)){
 				this.y +=CELL_SIZE;

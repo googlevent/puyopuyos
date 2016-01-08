@@ -69,8 +69,8 @@ function draw(){
 	}
 
 	for(var i=0; i<cloudNUM; i++){
-		cloudPositionX[i] += 1;
-		cloudPositionY[i] += Math.sin(cloudPositionX[i]/10);
+		cloudPositionX[i] += .55;
+		cloudPositionY[i] += Math.sin(cloudPositionX[i]/8);
 		if(cloudPositionX[i] > screenX){
 			cloudPositionX[i] = -130;
 		}
