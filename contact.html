@@ -7,8 +7,16 @@
 	<title>top page</title>
 	<link rel="stylesheet" href="./css/puyo.css">
 	<script src="./js/jquery.min.js"></script>
+	<script src="./js/contactback.js"></script>
 </head>	
-<body>
+<body onload="init();">
+	<canvas id="canvas" width=700 height=500></canvas>
+	<script>
+	// canvasサイズをスクリーンサイズに合わせる
+	$('#canvas').attr('width', window.parent.screen.width);
+	$('#canvas').attr('height',window.parent.screen.height);   
+</script>
+
 <div id="menu">
 	<a href="index.html" id="title">DRORiS</a>
 	<div id="inmenu">
