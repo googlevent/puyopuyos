@@ -21,50 +21,53 @@
       });
     });
   </script>
+
   <script type="text/javascript">
     function getUsers(){
       var usern = name;
       var output = document.getElementById('user_output');
-      output.value=name;
-      var radioList=document.getElementsByName('level1');
-      for(var i=0;i<radioList.length;i++){
-        if(radioList[i].checked){
-          var speed=radioList[i].value;
-        }
-      }
+      output.value=usern;
+      // var radioList=document.getElementsByName('level1');
+      // for(var i=0;i<radioList.length;i++){
+      //   if(radioList[i].checked){
+      //     var speed=radioList[i].value;
+      //   }
+      // }
       return usern;
     }
   </script>
+  <audio src="sound/tetris.mp3" autoplay loop></audio>
 </head>
-<body onload="getUsers();">  
+<body onload="getUsers();"> 
  <div id="content" style="width: 350px; padding: 0px 200px 0px 230px;">  
- <div id="timely">
-  <div id="playerimg"><img src=""></div>
-  <from id="playername">
-    Name: <output id="user_output">？？？</output>
-  </from>
-</div>
-  <div id="puyo">
+   <div id="timely">
+    <div id="playerimg"><img src=""></div>
+    <from id="playername">
+      Name: <output id="user_output">？？？</output>
+    </from>
+  </div>
+  <div id="puyo" onload="getUsers();">
     <div id="enchant-stage"></div>
   </div>
-  <!-- ランキング表 -->
-  <div id="rank">
-    <table id="ranking" class="tablesorter">
-     <thead>
-       <h4>得点表</h4>
-       <tr>
-         <th>順番</th>
-         <th>プレイヤー名</th>
-         <th>得点</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr style="display:none;">
-         <td /><td /><td />
-       </tr>
-     </tbody>
-   </table>
- </div>
+
+ <!-- ランキング表 -->
+ <div id="rank">
+  <table id="ranking" class="tablesorter">
+   <thead>
+     <h4>得点表</h4>
+     <tr>
+       <th>順番</th>
+       <th>プレイヤー名</th>
+       <th>得点</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr style="display:none;">
+       <td /><td /><td />
+     </tr>
+   </tbody>
+ </table>
+</div>
 </div>
 <footer>
   <p>Copyright (C) 2015-2016 DRORiZM(株)</p>
