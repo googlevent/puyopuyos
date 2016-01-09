@@ -116,7 +116,6 @@ window.onload=function(){
 			overScene.addChild(retryLabel2);
 			retryLabel2.addEventListener(Event.TOUCH_START,function(e){
 				//ここに「新しいプレイヤーを追加する」を加えたときの動作をかく
-
 				game.replaceScene(createStartScene());
 			});
 
