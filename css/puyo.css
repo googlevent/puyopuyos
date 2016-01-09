@@ -108,8 +108,7 @@ footer{
 
 #timely{
 	width: 100%;
-	/*background: blue;*/
-	margin: 30px 0 15px 0;
+	margin: 30px 0 15px -140px;
 	padding: 0;
 	top: 0;
 }
@@ -137,6 +136,8 @@ footer{
 }
 
 #puyo{
+	position: relative;
+	left: -150px;
 }
 
 #preference_rank{
@@ -244,8 +245,9 @@ footer{
 }
 
 #rank{
-	/*position: absolute;*/
-	/*top: 370px;*/
+	position: relative;
+	left: 200px;
+	top: -450px;
 }
 
 #rank table{

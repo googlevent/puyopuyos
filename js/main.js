@@ -12,7 +12,7 @@ window.onload=function(){
 	game.fps=FPS;
 	game.preload('startgame.png');
 	game.preload(PUYOS_IMG);
-	game.preload('gameover.png');
+	game.preload('gameover.jpg');
 	game.keybind(32,'a');
 	game.onload=function(){
 
@@ -97,17 +97,30 @@ window.onload=function(){
 		var createGameoverScene = function(){
 			var overScene = new Scene();
 			var gameov=new Sprite(300,450);
-			gameov.image=game.assets['gameover.png'];
+			gameov.image=game.assets['gameover.jpg'];
 			overScene.addChild(gameov);
-			var retryLabel = new Label('もう一度遊ぶならクリック');
+			var retryLabel = new Label('同じプレイヤーでもう一度遊ぶ');
 			retryLabel.color='#fff';
-			retryLabel.x=50;
-			retryLabel.y=410;
-			retryLabel.font='20px sans-serif';
+			retryLabel.x=10;
+			retryLabel.y=380;
+			retryLabel.font='20px MyFont';
 			overScene.addChild(retryLabel);
 			retryLabel.addEventListener(Event.TOUCH_START,function(e){
 				game.replaceScene(createStartScene());
 			});
+			var retryLabel2 = new Label('新しいプレイヤーを追加する');
+			retryLabel2.color='#fff';
+			retryLabel2.x=10;
+			retryLabel2.y=410;
+			retryLabel2.font='20px MyFont';
+			overScene.addChild(retryLabel2);
+			retryLabel2.addEventListener(Event.TOUCH_START,function(e){
+				//ここに「新しいプレイヤーを追加する」を加えたときの動作をかく
+
+				game.replaceScene(createStartScene());
+			});
+
+
 			return overScene;
 		};
 		game.replaceScene(createStartScene());
