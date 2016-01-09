@@ -5079,6 +5079,7 @@ enchant.Surface = enchant.Class.create(enchant.EventTarget, {
         var id = 'enchant-surface' + core._surfaceID++;
         if (document.getCSSCanvasContext) {
             this.context = document.getCSSCanvasContext('2d', id, width, height);
+            // this.context = this._element.getContext('2d');
             this._element = this.context.canvas;
             this._css = '-webkit-canvas(' + id + ')';
             var context = this.context;

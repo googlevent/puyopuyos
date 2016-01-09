@@ -12,6 +12,7 @@
   <script src="./js/main.js"></script>
   <script src="./js/imagepack.js"></script>
   <script src="./js/linkscroll.js"></script>
+  <script src="./js/global.js"></script>
 
   <!-- 画像選択部分のアコーディオン -->
   <script>
@@ -25,13 +26,15 @@
     function getUsers(){
       var usern = document.username.name.value;
       var output = document.getElementById('user_output');
-      output.value=usern
+      output.value=usern;
       var radioList=document.getElementsByName('level1');
       for(var i=0;i<radioList.length;i++){
         if(radioList[i].checked){
           var speed=radioList[i].value;
         }
       }
+      name = usern;
+      console.log(name);
       return usern;
     }
   </script>
@@ -40,7 +43,6 @@
   <div id="menu">
     <a href="index.html" id="title">DRORiS</a>
     <div id="inmenu">
-     <!-- <a href="index.html"><p id="icon">DRORiS</p></a> -->
      <a href="howto.html" style="left: 0px;">遊び方</a>
      <a href="" style="left: 150px;">ゲーム</a>
      <a href="contact.html" style="left: 300px;">問い合わせ</a>
@@ -50,11 +52,11 @@
 
  <div id="upvideo" onClick="rem();">Skip</div>
  <div id="vi">
-  <video src="img/droidmov.mp4" autoplay></video>
+  <!-- <video src="img/droidmov.mp4" autoplay></video> -->
 </div>
 
 <script>
- 
+
   function rem(){
     console.log("click!");
     $("#vi").remove();
@@ -122,16 +124,12 @@
 
 <div class="card">
   <div id="forth">
-    <a href="#timely"><span>ゲームスタート</span></a>
+    <a href="gamenow.html"><span>ゲームスタート</span></a>
     <a href="howto.html"><span>遊び方を見る</span></a>
   </div>
 </div>
 <div class="space"></div>
 <div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-
 <div class="space"></div>
 <!-- プレイヤー名表示 -->
 
@@ -143,14 +141,20 @@
 </div>
 
 
+
 <!-- game stage -->
-<div id="puyo">
-  <div id="enchant-stage"></div>
-</div>
+
+<a href="gamenow.html">
+  <div id="puyo">
+    <div id="enchant-stage"></div>
+  </div>
+</a>
 
 
 <div class="space"></div>
+
 <!-- ランキング表 -->
+<!--
 <div id="rank">
   <table id="ranking" class="tablesorter">
    <thead>
@@ -168,6 +172,7 @@
    </tbody>
  </table>
 </div>
+-->
 
 <!-- ここまでランキング表 -->
 </div>

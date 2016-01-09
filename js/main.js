@@ -102,7 +102,7 @@ window.onload=function(){
 			var retryLabel = new Label('同じプレイヤーでもう一度遊ぶ');
 			retryLabel.color='#fff';
 			retryLabel.x=10;
-			retryLabel.y=380;
+			retryLabel.y=100;
 			retryLabel.font='20px MyFont';
 			overScene.addChild(retryLabel);
 			retryLabel.addEventListener(Event.TOUCH_START,function(e){
@@ -116,6 +116,8 @@ window.onload=function(){
 			overScene.addChild(retryLabel2);
 			retryLabel2.addEventListener(Event.TOUCH_START,function(e){
 				//ここに「新しいプレイヤーを追加する」を加えたときの動作をかく
+				// window.scrollTo(0, 0);
+				// console.log("hey");
 				game.replaceScene(createStartScene());
 			});
 
